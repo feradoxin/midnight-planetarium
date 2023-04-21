@@ -1,0 +1,16 @@
+[Unit]
+Description=Auto-trader plugin for Shitty Signals Service
+
+[Service]
+# To change exec script on production
+ExecStart=/usr/bin/node /home/ubuntu/midnight-planetarium/index.js
+Restart=on-failure
+# Note Debian/Ubuntu uses 'nogroup', RHEL/Fedora uses 'nobody'
+# User=ubuntu
+# Group=ubuntu
+Type=simple
+Environment=NODE_ENV=production
+WorkingDirectory=/home/ubuntu/midnight-planetarium
+
+[Install]
+WantedBy=multi-user.target
