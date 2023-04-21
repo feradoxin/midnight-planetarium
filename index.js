@@ -18,7 +18,8 @@ require('dotenv').config();
 const tgbot = new Telegraf(process.env.TELEGRAM_TOKEN);
 const tgChatId = process.env.TELEGRAM_CHATID;
 
-// // Express server configuration
+// Express server configuration
+// Port 10443 used due to conflict with tv-informer-app
 https.createServer(
 	{
 		key: fs.readFileSync('/etc/letsencrypt/live/sss.akashic.tech/privkey.pem', 'utf8'),
@@ -26,7 +27,7 @@ https.createServer(
 		ca: fs.readFileSync('/etc/letsencrypt/live/sss.akashic.tech/chain.pem')
 	},
 	app
-).listen(443, () => {
+).listen(10443, () => {
 	console.log("HTTPS Express Server running. Listening on port 443.");
 	tgbot.telegram.sendMessage(
 		tgChatId,
