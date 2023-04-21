@@ -52,6 +52,7 @@ let binance = new ccxt.binance ({
 });
 
 // Uncomment to use Binance Testnet
+// Generate testnet keys at https://testnet.binance.vision/
 binance.setSandboxMode (true);
 
 // ETHUSDT Trade
