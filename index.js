@@ -57,6 +57,9 @@ binance.setSandboxMode (true);
 
 // ETHUSDT Trade
 app.post('/api/v1/trade/ethusdt', function (req, res) {
+	let payload = req.body;
+	let apiKey = payload.apiKey;
+	
 	if (!apikey || apiKey !== process.env.APP_APIKEY) {
 		res.status(401).json({error: 'unauthorised'});
 	} else {
