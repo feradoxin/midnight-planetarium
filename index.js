@@ -21,9 +21,9 @@ const tgChatId = process.env.TELEGRAM_CHATID;
 // // Express server configuration
 https.createServer(
 	{
-		key: fs.readFileSync('YOUR_PRIVKEY.pem', 'utf8'),
-		cert: fs.readFileSync('YOUR_CERT.pem'),
-		ca: fs.readFileSync('YOUR_CHAIN.pem')
+		key: fs.readFileSync('/etc/letsencrypt/live/sss.akashic.tech/privkey.pem', 'utf8'),
+		cert: fs.readFileSync('/etc/letsencrypt/live/sss.akashic.tech/cert.pem'),
+		ca: fs.readFileSync('/etc/letsencrypt/live/sss.akashic.tech/chain.pem')
 	},
 	app
 ).listen(443, () => {
@@ -59,7 +59,7 @@ binance.setSandboxMode (true);
 app.post('/api/v1/trade/ethusdt', function (req, res) {
 	let payload = req.body;
 	let apiKey = payload.apiKey;
-	
+
 	if (!apikey || apiKey !== process.env.APP_APIKEY) {
 		res.status(401).json({error: 'unauthorised'});
 	} else {
